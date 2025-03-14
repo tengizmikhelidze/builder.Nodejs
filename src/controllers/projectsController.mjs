@@ -4,7 +4,7 @@ export async function getAllProjects(req, res) {
     let connection;
     try {
         connection = await getConnection();
-        const [rows] = await connection.execute('SELECT * FROM project');
+        const [rows] = await connection.execute('SELECT * FROM projects');
 
         const projects = rows.map(project => ({
             ...project,
