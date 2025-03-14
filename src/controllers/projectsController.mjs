@@ -1,15 +1,23 @@
-function serializeBigInt(obj) {
-    return JSON.parse(JSON.stringify(obj, (key, value) =>
-        typeof value === 'bigint' ? value.toString() : value
-    ));
-}
+import { getConnection } from '../db/db.mjs';
 
-export const getAllProjects = async (req, res) => {
+export async function getAllProjects(req, res) {
+    let connection;
     try {
+        connection = await getConnection();
+        const [rows] = await connection.execute('SELECT * FROM project');
 
-        res.json([]);
+        const projects = rows.map(project => ({
+            ...project,
+            floors: []
+        }));
 
-    } catch (err) {
-        res.status(500).json({ error: 'Unexpected error', details: err.message });
+        res.json(projects);
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        res.status(500).json({ error: 'Database error' });
+    } finally {
+        if (connection) {
+            await connection.end();
+        }
     }
-};
+}
