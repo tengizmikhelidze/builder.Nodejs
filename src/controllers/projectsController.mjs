@@ -8,6 +8,7 @@ export async function getAllProjects(req, res) {
 
         const projects = rows.map(project => ({
             ...project,
+            isProjectEnded: !!project.isProjectEnded,
             floors: []
         }));
 
