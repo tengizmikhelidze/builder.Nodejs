@@ -1,5 +1,5 @@
 const corsConfig = {
-    origin: 'http://localhost:4200',
+    origin: '*',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
 };
