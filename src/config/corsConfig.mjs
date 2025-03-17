@@ -1,7 +1,7 @@
 const corsConfig = {
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: '*',
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
 };
 
 export default corsConfig;
