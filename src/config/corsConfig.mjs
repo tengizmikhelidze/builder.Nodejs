@@ -1,7 +1,7 @@
 const corsConfig = {
     origin: '*',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: '*',
 };
 
 export default corsConfig;
